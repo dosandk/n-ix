@@ -1,14 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router'
+import { logout } from '../AC/authActions'
+import { connect } from 'react-redux'
 
-export default (props) => {
-    return (
-        <header>
+class Header extends Component {
+    logout(e) {
+        e.preventDefault();
+        this.props.logout();
+    }
+
+    render() {
+        const { user } = this.props;
+
+        const userLinks = (
             <div>
-                <div>User name</div>
-                <Link to='/login'>Login</Link>
-                <div>Logout</div>
+                <div>{ user.username }</div>
+                <a href="#" onClick={ this.logout.bind(this) }>Logout</a>
             </div>
-        </header>
-    )
-};
+        );
+
+        const guestLinks = (
+            <div>
+                <Link to='/login'>Login</Link>
+            </div>
+        );
+
+        return (
+            <header>
+                <div>
+                    { user.isAuthenticated ? userLinks : guestLinks }
+                </div>
+            </header>
+        )
+    }
+}
+
+export default connect((state) => state.auth, { logout })(Header);

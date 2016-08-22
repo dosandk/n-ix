@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux'
-import { login } from '../AC/authActions';
+import { login } from '../AC/authActions'
+import { Link } from 'react-router'
 
 class Login extends Component {
     static contextTypes = {
@@ -15,6 +16,9 @@ class Login extends Component {
     render() {
         return (
             <div>
+                <div>
+                    <Link to='/posts'>Back to posts</Link>
+                </div>
                 <div>
                     <h3>Login form</h3>
                     <form onSubmit = { this.handleSubmit } >
@@ -41,8 +45,6 @@ class Login extends Component {
 
     handleSubmit = (ev) => {
         ev.preventDefault();
-
-        console.error('handleSubmit');
 
         this.props.login(this.state).then(
             (res) => this.context.router.push('/posts')

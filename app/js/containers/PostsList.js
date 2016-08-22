@@ -13,7 +13,7 @@ class PostsList extends Component {
         });
 
         const createPost = () => {
-            return auth.isAuthenticated ? <CreatePost /> : '';
+            return auth.user.isAuthenticated ? <CreatePost /> : '';
         };
 
         return (

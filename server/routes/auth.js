@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
     const { name, pass } = req.body;
 
     if (usersObj[name] === pass) {
-        const token = jwt.sign({ username: name }, config.jwtSecret);
+        const token = jwt.sign({ username: name, isAuthenticated: true }, config.jwtSecret);
 
         res.json({ token });
     }
