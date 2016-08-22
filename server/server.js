@@ -6,12 +6,14 @@ import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
 import auth from './routes/auth';
+import posts from './routes/posts';
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
 app.use('/api/auth', auth);
+app.use('/api/posts', posts);
 
 const compiler = webpack(webpackConfig);
 

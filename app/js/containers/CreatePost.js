@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createPost } from '../AC/createPost'
+import { createPost } from '../AC/posts'
 import { connect } from 'react-redux'
 
 class CreatePost extends Component {
