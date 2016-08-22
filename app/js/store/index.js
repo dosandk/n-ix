@@ -3,6 +3,9 @@ import reducer from '../reducer'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import randomId from '../middlewares/randomId'
+import jwtDecode from 'jwt-decode'
+import setAuthorizationToken from '../utils/setAuthorizationToken'
+import { setCurrentUser } from '../AC/authActions';
 
 const enhancer = compose(
     applyMiddleware(thunk, randomId, createLogger()),
@@ -30,6 +33,11 @@ const defaultState = {
 };
 
 const store = createStore(reducer, defaultState, enhancer);
+
+if (localStorage.jwtToken) {
+    setAuthorizationToken(localStorage.jwtToken);
+    store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
+}
 
 window.store = store;
 

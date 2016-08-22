@@ -5,11 +5,13 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
+import auth from './routes/auth';
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+app.use('/api/auth', auth);
 
 const compiler = webpack(webpackConfig);
 

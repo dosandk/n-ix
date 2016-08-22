@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux'
+import { login } from '../AC/authActions';
 
 class Login extends Component {
     static contextTypes = {
@@ -7,7 +8,7 @@ class Login extends Component {
     };
 
     state = {
-        email: '',
+        name: '',
         pass: ''
     };
 
@@ -17,10 +18,10 @@ class Login extends Component {
                 <div>
                     <h3>Login form</h3>
                     <form onSubmit = { this.handleSubmit } >
-                        <input placeholder="Email"
-                               value = { this.state.email }
-                               onChange = { this.handleChange('email') }
-                               type="email"/>
+                        <input placeholder="Name"
+                               value = { this.state.name }
+                               onChange = { this.handleChange('name') }
+                               type="text"/>
                         <input placeholder="Password"
                                onChange = { this.handleChange('pass') }
                                value = { this.state.pass }
@@ -43,13 +44,15 @@ class Login extends Component {
 
         console.error('handleSubmit');
 
+        this.props.login(this.state).then(
+            (res) => this.context.router.push('/posts')
+        );
+
         this.setState({
-            email: '',
+            name: '',
             pass: ''
         });
-
-        this.context.router.push('/posts');
     }
 }
 
-export default connect(null, null)(Login)
+export default connect(null, { login })(Login)

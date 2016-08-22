@@ -6,16 +6,20 @@ import { connect } from 'react-redux'
 
 class PostsList extends Component {
     render() {
-        const { posts } = this.props;
+        const { posts, auth } = this.props;
 
         const postsItems = posts.map((post) => {
             return <Post key={ post.id } post={ post } />
         });
 
+        const createPost = () => {
+            return auth.isAuthenticated ? <CreatePost /> : '';
+        };
+
         return (
             <div>
                 <Header />
-                <CreatePost />
+                { createPost() }
                 <div>
                     { postsItems }
                 </div>
@@ -26,6 +30,7 @@ class PostsList extends Component {
 
 export default connect((state, props) => {
     return {
-        posts: state.posts
+        posts: state.posts,
+        auth: state.auth
     }
 })(PostsList)
