@@ -8,7 +8,7 @@ class PostsList extends Component {
     render() {
         const { posts, auth } = this.props;
 
-        const postsItems = posts.map((post) => {
+        const postsItems = posts.reverse().map((post) => {
             return <Post key={ post.id } post={ post } />
         });
 
@@ -18,10 +18,18 @@ class PostsList extends Component {
 
         return (
             <div>
-                <Header />
-                { createPost() }
-                <div>
-                    { postsItems }
+                <div className="container">
+                    <Header />
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="panel">
+                                <div className="panel-body">
+                                    { createPost() }
+                                    { postsItems }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

@@ -15,23 +15,39 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <Link to='/posts'>Back to posts</Link>
-                </div>
-                <div>
-                    <h3>Login form</h3>
-                    <form onSubmit = { this.handleSubmit } >
-                        <input placeholder="Name"
-                               value = { this.state.name }
-                               onChange = { this.handleChange('name') }
-                               type="text"/>
-                        <input placeholder="Password"
-                               onChange = { this.handleChange('pass') }
-                               value = { this.state.pass }
-                               type="password"/>
-                        <input type="submit" value="Post"/>
-                    </form>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-12">
+                        <header className="navbar navbar-default">
+                            <div className="navbar-header">
+                                <ul className="nav navbar-nav">
+                                    <li>
+                                        <Link to='/posts'>Back to posts</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </header>
+                        <div>
+                            <h3>Login form</h3>
+                            <form onSubmit = { this.handleSubmit } >
+                                <div className="form-group">
+                                    <input className="form-control"
+                                           placeholder="Name"
+                                           value = { this.state.name }
+                                           onChange = { this.handleChange('name') }
+                                           type="text"/>
+                                </div>
+                                <div className="form-group">
+                                    <input className="form-control"
+                                           placeholder="Password"
+                                           onChange = { this.handleChange('pass') }
+                                           value = { this.state.pass }
+                                           type="password"/>
+                                </div>
+                                <input className="btn btn-default" type="submit" value="Login"/>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

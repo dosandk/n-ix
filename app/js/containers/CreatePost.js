@@ -10,21 +10,27 @@ class CreatePost extends Component {
 
     render() {
         return (
-            <div>
-                <h3>
-                    Create post
-                </h3>
-                <div>
-                    <form onSubmit = { this.handleSubmit } >
-                        <input value = { this.state.title }
-                               onChange = { this.handleChange('title') }
-                               type="text"/>
-                        <textarea
-                            placeholder="Insert here a post content"
-                            onChange = { this.handleChange('description') }
-                            value = { this.state.description } />
-                        <input type="submit" value="Post"/>
-                    </form>
+            <div className="row">
+                <div className="col-md-12">
+                    <h3>Create post</h3>
+                    <div>
+                        <form onSubmit = { this.handleSubmit } >
+                            <div className="form-group">
+                                <input className="form-control"
+                                       placeholder="Post title"
+                                       value = { this.state.title }
+                                       onChange = { this.handleChange('title') }
+                                       type="text"/>
+                            </div>
+                            <div className="form-group">
+                               <textarea className="form-control"
+                                         placeholder="Insert here a post content"
+                                         onChange = { this.handleChange('description') }
+                                         value = { this.state.description } />
+                            </div>
+                            <input className="btn btn-default" type="submit" value="Create post"/>
+                        </form>
+                    </div>
                 </div>
             </div>
         )

@@ -13,23 +13,34 @@ class Header extends Component {
         const { user } = this.props;
 
         const userLinks = (
-            <div>
-                <div>{ user.username }</div>
-                <a href="#" onClick={ this.logout.bind(this) }>Logout</a>
+            <div className="navbar-header">
+                <a className="navbar-brand" href="#">
+                    User: { user.username }
+                </a>
+                <ul className="nav navbar-nav">
+                    <li>
+                        <a href="#" onClick={ this.logout.bind(this) }>Logout</a>
+                    </li>
+                </ul>
             </div>
         );
 
         const guestLinks = (
-            <div>
-                <Link to='/login'>Login</Link>
+            <div className="navbar-header">
+                <a className="navbar-brand" href="#">
+                    User: Not authorized
+                </a>
+                <ul className="nav navbar-nav">
+                    <li>
+                        <Link to='/login'>Login</Link>
+                    </li>
+                </ul>
             </div>
         );
 
         return (
-            <header>
-                <div>
-                    { user.isAuthenticated ? userLinks : guestLinks }
-                </div>
+            <header className="navbar navbar-default">
+                { user.isAuthenticated ? userLinks : guestLinks }
             </header>
         )
     }
