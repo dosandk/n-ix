@@ -39,9 +39,10 @@ class CreatePost extends Component {
     handleSubmit = (ev) => {
         ev.preventDefault();
 
-        const { createPost } = this.props;
+        const { createPost, user } = this.props;
 
         createPost({
+            user: user.username,
             title: this.state.title,
             description: this.state.description
         });
@@ -53,4 +54,4 @@ class CreatePost extends Component {
     }
 }
 
-export default connect(null, { createPost })(CreatePost)
+export default connect((state) => state.auth, { createPost })(CreatePost)

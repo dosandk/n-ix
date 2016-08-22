@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
         res.json({ token });
     }
     else {
-        res.status(401).json({ errors: { form: 'Invalid Credentials' } });
+        res.status(401).json({ error: 'Invalid Credentials' });
     }
 });
 

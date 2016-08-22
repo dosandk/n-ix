@@ -47,7 +47,8 @@ class Login extends Component {
         ev.preventDefault();
 
         this.props.login(this.state).then(
-            (res) => this.context.router.push('/posts')
+            res => this.context.router.push('/posts'),
+            rej => alert(rej)
         );
 
         this.setState({

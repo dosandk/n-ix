@@ -1,4 +1,4 @@
 {
-    "superUser1": "123123",
-    "superUser2": "321321"
+    "admin": "123123",
+    "partner": "321321"
 }
